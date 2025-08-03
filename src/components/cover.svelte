@@ -30,11 +30,7 @@
 		/>
 	</div>
 
-	<div class="names-kr-box">
-		<span class="names kr">사랑스러운</span>
-		<span class="names kr">우리들의 보석</span>
-		<span class="names kr">김시하 돌잔치</span>
-	</div>
+
 
 	<div class="cover-title-container">
 		<div class="names-en-box">
@@ -51,7 +47,9 @@
 <style lang="scss">
 	section.cover {
 		position: relative;
-		background-image: url('/src/lib/assets/cover.webp');
+		background-image: 
+			linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, transparent 30%),
+			url('/src/lib/assets/cover.jpg');
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
@@ -65,24 +63,14 @@
 		overflow: hidden;
 		pointer-events: none;
 	}
-	.names-kr-box {
-		position: absolute;
-		top: 3em;
-		left: 4em;
 
-		span.names {
-			color: #616161;
-			display: block;
-			font-size: 1rem;
-			letter-spacing: 0.8em;
-			line-height: 2;
-		}
-	}
 
 	.cover-title-container {
 		width: 100%;
 		position: absolute;
-		bottom: 1.5em;
+		top: 3em;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	.names-en-box {
@@ -92,7 +80,7 @@
 
 		span.names {
 			display: block;
-			color: $white;
+			color: #000;
 			word-spacing: 5px;
 			font-size: 2.2rem;
 		}
@@ -107,7 +95,7 @@
 		span.event-date-and-time,
 		span.event-place {
 			display: block;
-			color: $white;
+			color: #000;
 
 			&.kr {
 				font-size: 1rem;
