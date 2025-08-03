@@ -1,4 +1,7 @@
 <script lang="ts">
+	import photo0_1 from '$lib/assets/gallery/0_1.jpg';
+	import photo0_2 from '$lib/assets/gallery/0_2.jpg';
+	import photo0_3 from '$lib/assets/gallery/0_3.jpg';
 	import photo2 from '$lib/assets/gallery/2.jpg';
 	import photo3 from '$lib/assets/gallery/3.jpg';
 	import photo4 from '$lib/assets/gallery/4.jpg';
@@ -8,7 +11,6 @@
 	import photo8 from '$lib/assets/gallery/8.jpg';
 	import photo9 from '$lib/assets/gallery/9.jpg';
 	import photo10 from '$lib/assets/gallery/10.jpg';
-	import photo11 from '$lib/assets/gallery/11.jpg';
 
 	import PhotoSwipeLightBox from 'photoswipe/lightbox';
 	import PhotoSwipe from 'photoswipe';
@@ -52,6 +54,9 @@
 	});
 
 	const photos = [
+		{ src: photo0_1 },
+		{ src: photo0_2 },
+		{ src: photo0_3 },
 		{ src: photo10 },
 		{ src: photo2 },
 		{ src: photo3 },
@@ -60,8 +65,7 @@
 		{ src: photo6 },
 		{ src: photo7 },
 		{ src: photo8 },
-		{ src: photo9 },
-		{ src: photo11 }
+		{ src: photo9 }
 	];
 </script>
 
@@ -127,9 +131,8 @@
 	}
 
 	.slide {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		display: block;
+		width: 100%;
 	}
 
 	img.thumbnail {
@@ -137,7 +140,7 @@
 		width: 100%;
 		height: auto;
 		object-fit: contain;
-		max-height: none;
+		display: block;
 		opacity: 0.75;
 		transition: opacity 0.3s ease;
 	}

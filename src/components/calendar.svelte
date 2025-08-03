@@ -63,7 +63,7 @@
 									<span class="day-number" class:highlighted={day === targetDate}>
 										{day}
 										{#if day === targetDate}
-											<span class="time-indicator">오후 4시</span>
+											<span class="time-indicator">오후 4시 30분</span>
 										{/if}
 									</span>
 								{/if}
