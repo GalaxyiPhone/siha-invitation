@@ -16,7 +16,7 @@ const config = {
 			strict: true
 		}),
 		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/invitation' : '',
+			base: process.env.BASE_PATH || '',
 		}
 	}
 };

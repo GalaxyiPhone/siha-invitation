@@ -1,5 +1,5 @@
 <script lang="ts">
-	import calendarDeco from '$lib/assets/calendar-deco.svg';
+	import { base } from '$app/paths';
 
 	// 2025년 8월 달력 생성
 	const year = 2025;
@@ -71,7 +71,7 @@
 			</div>
 		</div>
 	</div>
-	<img class="calendar-deco" src={calendarDeco} alt="calendar deco" />
+	<img class="calendar-deco" src="{base}/assets/calendar-deco.svg" alt="calendar deco" />
 </section>
 
 <style lang="scss">

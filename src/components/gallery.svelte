@@ -1,16 +1,5 @@
 <script lang="ts">
-	import photo0_1 from '$lib/assets/gallery/0_1.jpg';
-	import photo0_2 from '$lib/assets/gallery/0_2.jpg';
-	import photo0_3 from '$lib/assets/gallery/0_3.jpg';
-	import photo2 from '$lib/assets/gallery/2.jpg';
-	import photo3 from '$lib/assets/gallery/3.jpg';
-	import photo4 from '$lib/assets/gallery/4.jpg';
-	import photo5 from '$lib/assets/gallery/5.jpg';
-	import photo6 from '$lib/assets/gallery/6.jpg';
-	import photo7 from '$lib/assets/gallery/7.jpg';
-	import photo8 from '$lib/assets/gallery/8.jpg';
-	import photo9 from '$lib/assets/gallery/9.jpg';
-	import photo10 from '$lib/assets/gallery/10.jpg';
+	import { base } from '$app/paths';
 
 	import PhotoSwipeLightBox from 'photoswipe/lightbox';
 	import PhotoSwipe from 'photoswipe';
@@ -53,18 +42,18 @@
 	});
 
 	const photos = [
-		{ src: photo0_1 },
-		{ src: photo0_2 },
-		{ src: photo0_3 },
-		{ src: photo10 },
-		{ src: photo2 },
-		{ src: photo3 },
-		{ src: photo4 },
-		{ src: photo5 },
-		{ src: photo6 },
-		{ src: photo7 },
-		{ src: photo8 },
-		{ src: photo9 }
+		{ src: `${base}/assets/gallery/0_1.jpg` },
+		{ src: `${base}/assets/gallery/0_2.jpg` },
+		{ src: `${base}/assets/gallery/0_3.jpg` },
+		{ src: `${base}/assets/gallery/10.jpg` },
+		{ src: `${base}/assets/gallery/2.jpg` },
+		{ src: `${base}/assets/gallery/3.jpg` },
+		{ src: `${base}/assets/gallery/4.jpg` },
+		{ src: `${base}/assets/gallery/5.jpg` },
+		{ src: `${base}/assets/gallery/6.jpg` },
+		{ src: `${base}/assets/gallery/7.jpg` },
+		{ src: `${base}/assets/gallery/8.jpg` },
+		{ src: `${base}/assets/gallery/9.jpg` }
 	];
 </script>
 

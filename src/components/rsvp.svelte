@@ -4,7 +4,7 @@
 	import { LoaderCircle } from '@lucide/svelte';
 	import { enhance } from '$app/forms';
 	import RsvpSelect from './rsvp-select.svelte';
-	import rsvpDeco from '$lib/assets/rsvp-deco.svg';
+	import { base } from '$app/paths';
 	import RsvpAccordion from './rsvp-accordion.svelte';
 
 	let { form } = $props();
@@ -25,7 +25,7 @@
 
 <section class="rsvp">
 	<div class="header">
-		<img class="header-deco" src={rsvpDeco} alt="rsvp header deco" />
+		<img class="header-deco" src="{base}/assets/rsvp-deco.svg" alt="rsvp header deco" />
 		<h2 class="title {localeStore.locale}">{$_('rsvp.title')}</h2>
 		<p class="sub-title {localeStore.locale}">
 			{$_('rsvp.reply_by')}

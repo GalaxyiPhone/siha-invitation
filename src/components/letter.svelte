@@ -1,14 +1,12 @@
 <script lang="ts">
-	import letterBottom from '$lib/assets/letter-bottom.jpg';
-
-	import letterDeco from '$lib/assets/letter-deco.svg';
+	import { base } from '$app/paths';
 
 
 </script>
 
 <section class="letter">
 	<div class="header">
-		<img class="header-deco" src={letterDeco} alt="letter header deco" />
+		<img class="header-deco" src="{base}/assets/letter-deco.svg" alt="letter header deco" />
 		<h2 class="title kr">2025.8.9</h2>
 		<p class="sub-title kr">우리 시하의 돌잔치에 초대합니다.</p>
 	</div>
@@ -20,7 +18,7 @@
 	</div>
 </section>
 
-<img class="letter-bottom" src={letterBottom} alt="letter bottom" />
+<img class="letter-bottom" src="{base}/assets/letter-bottom.jpg" alt="letter bottom" />
 
 <style lang="scss">
 	section.letter {

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
 	import { Confetti } from 'svelte-confetti';
+	import { base } from '$app/paths';
 
 	const maxSectionHeight = 900;
 	let sectionHeight = $state(maxSectionHeight);
@@ -12,9 +13,18 @@
 	if (browser && window.matchMedia('(max-width: 1024px)')) {
 		setSectionHeight();
 	}
+
+	const backgroundImageStyle = $derived(`
+		background-image: 
+			linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, transparent 30%),
+			url('${base}/assets/cover.jpg');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	`);
 </script>
 
-<section style:height={`${sectionHeight}px`} class="cover">
+<section style:height={`${sectionHeight}px`} style={backgroundImageStyle} class="cover">
 	<div class="confetti-area">
 		<Confetti
 			x={[-5, 5]}
@@ -45,12 +55,6 @@
 <style lang="scss">
 	section.cover {
 		position: relative;
-		background-image: 
-			linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, transparent 30%),
-			url('/src/lib/assets/cover.jpg');
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
 	}
 	.confetti-area {
 		position: absolute;

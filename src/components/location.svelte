@@ -1,6 +1,5 @@
 <script lang="ts">
-	import locationTopWave from '$lib/assets/location-top-wave.svg';
-	import locationDeco from '$lib/assets/location-deco.svg';
+	import { base } from '$app/paths';
 
 	import { Clipboard, Github } from '@lucide/svelte';
 	import { onMount } from 'svelte';
@@ -55,7 +54,7 @@
 	}
 </script>
 
-<img src={locationTopWave} class="location-top-wave" alt="" />
+<img src="{base}/assets/location-top-wave.svg" class="location-top-wave" alt="" />
 <section class="location">
 	<h2 class="title kr">장소</h2>
 	<p class="venue en">효종당</p>
@@ -76,7 +75,7 @@
 			카카오맵 바로가기
 		</a>
 	</div>
-	<img class="location-deco" src={locationDeco} alt="" />
+	<img class="location-deco" src="{base}/assets/location-deco.svg" alt="" />
 </section>
 
 <style lang="scss">
