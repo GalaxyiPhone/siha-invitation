@@ -1,19 +1,12 @@
 <script lang="ts">
 	import '/src/styles/global.scss';
-	import '/src/i18n.svelte.ts';
-	import { localeStore } from '../i18n.svelte';
 	import { onMount } from 'svelte';
-	import { _ } from 'svelte-i18n';
 
 	let { children } = $props();
 
-	let localeLoaded = $derived(!localeStore.isLoading && localeStore.locale);
-	let title = $state('');
+	let title = '시하의 첫 돌';
 	onMount(() => {
 		document.body.classList.add('loaded');
-		if (localeLoaded) {
-			title = $_('meta.title');
-		}
 	});
 </script>
 
@@ -29,16 +22,14 @@
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
 	/>
-	<meta property="og:title" content="Emily & Anthony's Wedding" />
-	<meta property="og:description" content="Please join us on our most special day!" />
-	<meta property="og:image" content="https://emily-marries-anthony.com/preview.jpg" />
-	<meta property="og:url" content="https://emily-marries-anthony.com/" />
+	<meta property="og:title" content="시하의 첫 돌" />
+	<meta property="og:description" content="우리 시하의 돌잔치에 초대합니다!" />
+	<meta property="og:image" content="/preview.jpg" />
+	<meta property="og:url" content="/" />
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-{#if localeLoaded}
-	{@render children()}
-{/if}
+{@render children()}
 
 <style lang="scss">
 </style>

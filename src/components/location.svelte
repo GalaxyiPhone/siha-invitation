@@ -1,8 +1,7 @@
 <script lang="ts">
 	import locationTopWave from '$lib/assets/location-top-wave.svg';
 	import locationDeco from '$lib/assets/location-deco.svg';
-	import { _ } from 'svelte-i18n';
-	import { localeStore } from '../i18n.svelte';
+
 	import { Clipboard, Github } from '@lucide/svelte';
 	import { onMount } from 'svelte';
 
@@ -51,14 +50,14 @@
 	function copyAddress() {
 		navigator.clipboard
 			.writeText('경기 용인시 기흥구 동백8로113번길 64')
-			.then(() => alert($_('location.address_copied')))
+			.then(() => alert('주소를 복사했습니다.'))
 			.catch(() => null);
 	}
 </script>
 
 <img src={locationTopWave} class="location-top-wave" alt="" />
 <section class="location">
-	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
+	<h2 class="title kr">장소</h2>
 	<p class="venue en">효종당</p>
 	<button class="copy-address en" onclick={copyAddress}>
 		<span class="clipboard-icon">

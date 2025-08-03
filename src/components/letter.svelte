@@ -1,7 +1,6 @@
 <script lang="ts">
 	import letterBottom from '$lib/assets/letter-bottom.jpg';
-	import { _ } from 'svelte-i18n';
-	import { localeStore } from '../i18n.svelte';
+
 	import letterDeco from '$lib/assets/letter-deco.svg';
 
 
@@ -10,12 +9,12 @@
 <section class="letter">
 	<div class="header">
 		<img class="header-deco" src={letterDeco} alt="letter header deco" />
-		<h2 class="title {localeStore.locale}">{$_('letter.date')}</h2>
-		<p class="sub-title {localeStore.locale}">{$_('letter.sub_title')}</p>
+		<h2 class="title kr">2025.8.9</h2>
+		<p class="sub-title kr">우리 시하의 돌잔치에 초대합니다.</p>
 	</div>
 
 	<div class="letter-container">
-		<p class="letter {localeStore.locale}">{$_('letter.letter_content')}</p>
+		<p class="letter kr">소중한 여러분의 사랑과 관심 속에서<br/>우리 시하가 건강하게 첫 번째 생일을 맞이하게 되었습니다.<br/>이 뜻깊은 날을 여러분과 함께 나누고 싶어 돌잔치에 초대합니다.<br/><br/>따뜻한 축복의 마음으로 참석해 주시면 더없이 기쁠 것 같습니다.<br/>그날 뵙기를 손꼽아 기다리고 있겠습니다!</p>
 
 
 	</div>

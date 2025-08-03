@@ -16,8 +16,7 @@
 	import PhotoSwipe from 'photoswipe';
 	import 'photoswipe/style.css';
 	import { onMount } from 'svelte';
-	import { localeStore } from '../i18n.svelte';
-	import { _ } from 'svelte-i18n';
+
 
 	onMount(() => {
 		// 이미지 크기를 미리 로드하고 data 속성 설정
@@ -71,8 +70,8 @@
 
 <section class="gallery">
 	<div class="header">
-		<h2 class="title {localeStore.locale}">{$_('gallery.title')}</h2>
-		<p class="sub-title {localeStore.locale}">{$_('gallery.sub_title')}</p>
+		<h2 class="title kr">사진 모음</h2>
+		<p class="sub-title kr">사진을 탭하면 더 크게 볼 수 있습니다.</p>
 	</div>
 	<div id="gallery">
 		{#each photos as photo}

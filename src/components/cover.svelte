@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { localeStore } from '../i18n.svelte';
 	import { browser } from '$app/environment';
 	import { Confetti } from 'svelte-confetti';
-	import { _ } from 'svelte-i18n';
 
 	const maxSectionHeight = 900;
 	let sectionHeight = $state(maxSectionHeight);
@@ -38,8 +36,8 @@
 		</div>
 
 		<div class="event-date-and-place-box">
-			<span class="event-date-and-time {localeStore.locale}">{$_('cover.date')}</span>
-			<span class="event-place {localeStore.locale}">{$_('cover.place')}</span>
+			<span class="event-date-and-time kr">2025년 8월 9일 (토) 오후 4시 30분</span>
+			<span class="event-place kr">효종당 (경기도 용인시 기흥구)</span>
 		</div>
 	</div>
 </section>
