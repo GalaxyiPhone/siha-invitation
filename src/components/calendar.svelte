@@ -62,9 +62,6 @@
 								{#if day}
 									<span class="day-number" class:highlighted={day === targetDate}>
 										{day}
-										{#if day === targetDate}
-											<span class="time-indicator">오후 4시 30분</span>
-										{/if}
 									</span>
 								{/if}
 							</div>
@@ -119,6 +116,7 @@
 							align-items: center;
 							justify-content: center;
 							border: 1px solid #eee;
+							overflow: hidden;
 
 							.day-number {
 								display: flex;
@@ -135,14 +133,16 @@
 									color: white;
 									font-weight: bold;
 									animation: pulse 2s infinite;
-									width: 3em;
-									height: 3em;
+									width: 2.5em;
+									height: 2.5em;
 									
 									.time-indicator {
-										font-size: 0.5em;
+										font-size: 0.45em;
 										margin-top: 1px;
 										font-weight: normal;
 										opacity: 0.9;
+										white-space: nowrap;
+										line-height: 1;
 									}
 								}
 							}
@@ -156,6 +156,102 @@
 			position: absolute;
 			bottom: 0.5em;
 			right: 2.5em;
+		}
+
+		// 모바일 대응
+		@media (max-width: 768px) {
+			padding: 1.5em 1.5em 3em 1.5em;
+
+			.title {
+				font-size: 1.5em;
+				margin-bottom: 0.8em;
+			}
+
+			.calendar-content {
+				.calendar-grid {
+					max-width: 100%;
+
+					.weekdays {
+						.weekday {
+							padding: 0.3em;
+							font-size: 0.9em;
+						}
+					}
+
+					.days-grid {
+						.week-row {
+							.day-cell {
+								.day-number {
+									width: 1.8em;
+									height: 1.8em;
+									font-size: 0.9em;
+									
+									&.highlighted {
+										width: 2.2em;
+										height: 2.2em;
+										
+										.time-indicator {
+											font-size: 0.4em;
+											margin-top: 0.5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			img.calendar-deco {
+				bottom: 0.3em;
+				right: 1em;
+				width: 80px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			padding: 1em 1em 2.5em 1em;
+
+			.title {
+				font-size: 1.3em;
+			}
+
+			.calendar-content {
+				.calendar-grid {
+					.weekdays {
+						.weekday {
+							padding: 0.2em;
+							font-size: 0.8em;
+						}
+					}
+
+					.days-grid {
+						.week-row {
+							.day-cell {
+								.day-number {
+									width: 1.6em;
+									height: 1.6em;
+									font-size: 0.8em;
+									
+									&.highlighted {
+										width: 2em;
+										height: 2em;
+										
+										.time-indicator {
+											font-size: 0.35em;
+											margin-top: 0;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			img.calendar-deco {
+				width: 60px;
+			}
 		}
 	}
 

@@ -4,7 +4,9 @@
 
 	let { children } = $props();
 
-	let title = '시하의 첫 돌';
+	let title = '시하 돌잔치 초대장';
+	let description = '시하의 소중한 첫 번째 생일을 함께 축하해주세요! 2025년 8월 9일 오후 4시 30분, 따뜻한 마음으로 초대합니다.';
+	
 	onMount(() => {
 		document.body.classList.add('loaded');
 	});
@@ -12,6 +14,26 @@
 
 <svelte:head>
 	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta name="keywords" content="돌잔치, 시하, 첫 돌, 생일파티, 초대장, 돌상, 2025" />
+	<meta name="author" content="시하 가족" />
+	
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="시하 돌잔치 초대장" />
+	<meta property="og:description" content="시하의 소중한 첫 번째 생일을 함께 축하해주세요! 2025년 8월 9일 오후 4시 30분, 따뜻한 마음으로 초대합니다." />
+	<meta property="og:image" content="/preview.jpg" />
+	<meta property="og:url" content="/" />
+	<meta property="og:site_name" content="시하 돌잔치" />
+	<meta property="og:locale" content="ko_KR" />
+	
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="시하 돌잔치 초대장" />
+	<meta name="twitter:description" content="시하의 소중한 첫 번째 생일을 함께 축하해주세요! 2025년 8월 9일 오후 4시 30분, 따뜻한 마음으로 초대합니다." />
+	<meta name="twitter:image" content="/preview.jpg" />
+	
+	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
@@ -22,11 +44,6 @@
 		rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
 	/>
-	<meta property="og:title" content="시하의 첫 돌" />
-	<meta property="og:description" content="우리 시하의 돌잔치에 초대합니다!" />
-	<meta property="og:image" content="/preview.jpg" />
-	<meta property="og:url" content="/" />
-	<meta property="og:type" content="website" />
 </svelte:head>
 
 {@render children()}
