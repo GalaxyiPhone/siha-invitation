@@ -1,16 +1,56 @@
 <script lang="ts">
 	import locationTopWave from '$lib/assets/location-top-wave.svg';
-
 	import locationDeco from '$lib/assets/location-deco.svg';
 	import { _ } from 'svelte-i18n';
 	import { localeStore } from '../i18n.svelte';
 	import { Clipboard, Github } from '@lucide/svelte';
-	// Use Google Maps search URL for static site deployment
-	const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('108 Lamplighter, Irvine, CA 92620')}`;
+	import { onMount } from 'svelte';
+
+	let mapElement: HTMLDivElement;
+
+	onMount(() => {
+		// 네이버 지도 API 로드 확인
+		if (typeof window !== 'undefined' && window.naver && window.naver.maps) {
+			// 효종당의 대략적인 좌표 (용인시 기흥구)
+			const location = new window.naver.maps.LatLng(37.2436, 127.0808);
+			
+			const mapOptions = {
+				center: location,
+				zoom: 16,
+				mapTypeControl: true,
+				mapDataControl: false,
+				logoControl: false,
+				scaleControl: false
+			};
+
+			const map = new window.naver.maps.Map(mapElement, mapOptions);
+			
+			// 마커 추가
+			const marker = new window.naver.maps.Marker({
+				position: location,
+				map: map,
+				title: '효종당'
+			});
+
+			// 정보창 추가
+			const infoWindow = new window.naver.maps.InfoWindow({
+				content: '<div style="padding:10px;font-size:12px;"><strong>효종당</strong><br>경기도 용인시 기흥구</div>'
+			});
+
+			// 마커 클릭 시 정보창 표시
+			window.naver.maps.Event.addListener(marker, 'click', function() {
+				if (infoWindow.getMap()) {
+					infoWindow.close();
+				} else {
+					infoWindow.open(map, marker);
+				}
+			});
+		}
+	});
 
 	function copyAddress() {
 		navigator.clipboard
-			.writeText('108 Lamplighter, Irvine, CA 92620')
+			.writeText('경기 용인시 기흥구 동백8로113번길 64')
 			.then(() => alert($_('location.address_copied')))
 			.catch(() => null);
 	}
@@ -19,26 +59,16 @@
 <img src={locationTopWave} class="location-top-wave" alt="" />
 <section class="location">
 	<h2 class="title {localeStore.locale}">{$_('location.title')}</h2>
-	<p class="venue en">Woodbury Community Association</p>
+	<p class="venue en">효종당</p>
 	<button class="copy-address en" onclick={copyAddress}>
 		<span class="clipboard-icon">
 			<Clipboard size="1.1em" />
 		</span>
-		<span class="address">108 Lamplighter, Irvine, CA 92620</span></button
+		<span class="address">경기 용인시 기흥구 동백8로113번길 64</span></button
 	>
 	<div class="map">
-		<iframe
-			class="google-maps"
-			title="google maps"
-			allowfullscreen
-			referrerpolicy="no-referrer-when-downgrade"
-			src={googleMapsUrl}
-		></iframe>
+		<div bind:this={mapElement} class="naver-map" id="naverMap"></div>
 	</div>
-	<p class="signature en">made with ♡ by Emily & Anthony</p>
-	<a class="github-icon" href="https://github.com/anthopark/our-wedding-invitation" target="_blank"
-		><Github size="1.1em" strokeWidth={1} /></a
-	>
 	<img class="location-deco" src={locationDeco} alt="" />
 </section>
 
@@ -94,7 +124,7 @@
 
 		.address {
 			display: inline-block;
-			font-size: 1.2rem;
+			font-size: 0.9rem;
 			text-decoration: underline;
 		}
 	}
@@ -106,7 +136,7 @@
 		margin-bottom: 7em;
 	}
 
-	iframe.google-maps {
+	.naver-map {
 		width: 100%;
 		height: 100%;
 		border: none;

@@ -70,6 +70,7 @@
 
 	p.letter {
 		text-align: center;
+		white-space: pre-line; /* \n을 줄넘김으로 처리 */
 		&.kr {
 			line-height: 2.3em;
 			font-size: 0.9rem;

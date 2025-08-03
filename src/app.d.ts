@@ -8,6 +8,18 @@ declare global {
 			ctx: ExecutionContext;
 		}
 	}
+
+	interface Window {
+		naver: {
+			maps: {
+				Map: any;
+				Marker: any;
+				InfoWindow: any;
+				LatLng: any;
+				Event: any;
+			};
+		};
+	}
 }
 
 export {};
