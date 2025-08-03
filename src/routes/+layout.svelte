@@ -1,6 +1,8 @@
 <script lang="ts">
 	import '/src/styles/global.scss';
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
+	import { page } from '$app/stores';
 
 	let { children } = $props();
 
@@ -22,8 +24,8 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="시하 돌잔치 초대장" />
 	<meta property="og:description" content="시하의 소중한 첫 번째 생일을 함께 축하해주세요! 2025년 8월 9일 오후 4시 30분, 따뜻한 마음으로 초대합니다." />
-	<meta property="og:image" content="/preview.jpg" />
-	<meta property="og:url" content="/" />
+	<meta property="og:image" content="{base}/preview.jpg" />
+	<meta property="og:url" content="{base || '/'}" />
 	<meta property="og:site_name" content="시하 돌잔치" />
 	<meta property="og:locale" content="ko_KR" />
 	
@@ -31,7 +33,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="시하 돌잔치 초대장" />
 	<meta name="twitter:description" content="시하의 소중한 첫 번째 생일을 함께 축하해주세요! 2025년 8월 9일 오후 4시 30분, 따뜻한 마음으로 초대합니다." />
-	<meta name="twitter:image" content="/preview.jpg" />
+	<meta name="twitter:image" content="{base}/preview.jpg" />
 	
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />

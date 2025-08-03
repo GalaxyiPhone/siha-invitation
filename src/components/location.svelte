@@ -11,11 +11,11 @@
 		// 네이버 지도 API 로드 확인
 		if (typeof window !== 'undefined' && window.naver && window.naver.maps) {
 			// 효종당의 대략적인 좌표 (용인시 기흥구)
-			const location = new window.naver.maps.LatLng(37.2436, 127.0808);
+			const location = new window.naver.maps.LatLng(37.286846, 127.168104);
 			
 			const mapOptions = {
 				center: location,
-				zoom: 16,
+				zoom: 17,
 				mapTypeControl: true,
 				mapDataControl: false,
 				logoControl: false,
@@ -67,6 +67,14 @@
 	>
 	<div class="map">
 		<div bind:this={mapElement} class="naver-map" id="naverMap"></div>
+	</div>
+	<div class="map-links">
+		<a href="https://naver.me/59vqppdj" target="_blank" class="map-link naver">
+			네이버 지도 바로가기
+		</a>
+		<a href="https://place.map.kakao.com/18155086" target="_blank" class="map-link kakao">
+			카카오맵 바로가기
+		</a>
 	</div>
 	<img class="location-deco" src={locationDeco} alt="" />
 </section>
@@ -128,11 +136,59 @@
 		}
 	}
 
+	.map-links {
+		display: flex;
+		gap: 1em;
+		margin-top: 1em;
+		margin-bottom: 6em;
+		flex-wrap: nowrap;
+		justify-content: center;
+	}
+
+	.map-link {
+		display: inline-block;
+		padding: 0.8em 1.5em;
+		border-radius: 8px;
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 500;
+		transition: all 0.2s ease;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+		white-space: nowrap;
+
+		&.naver {
+			background-color: #03c75a;
+			color: white;
+
+			&:hover {
+				background-color: #02b350;
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(3, 199, 90, 0.3);
+			}
+		}
+
+		&.kakao {
+			background-color: #fee500;
+			color: #3c1e1e;
+
+			&:hover {
+				background-color: #fdd800;
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(254, 229, 0, 0.3);
+			}
+		}
+
+		@media (max-width: 480px) {
+			padding: 0.7em 1em;
+			font-size: 0.8rem;
+		}
+	}
+
 	.map {
 		margin-top: 2em;
 		width: 100%;
 		height: 16em;
-		margin-bottom: 7em;
+		margin-bottom: 0;
 	}
 
 	.naver-map {
