@@ -1,14 +1,14 @@
 <script lang="ts">
-	import photo2 from '$lib/assets/gallery/2.webp';
-	import photo3 from '$lib/assets/gallery/3.webp';
-	import photo4 from '$lib/assets/gallery/4.webp';
-	import photo5 from '$lib/assets/gallery/5.webp';
-	import photo6 from '$lib/assets/gallery/6.webp';
-	import photo7 from '$lib/assets/gallery/7.webp';
-	import photo8 from '$lib/assets/gallery/8.webp';
-	import photo9 from '$lib/assets/gallery/9.webp';
-	import photo10 from '$lib/assets/gallery/10.webp';
-	import photo11 from '$lib/assets/gallery/11.webp';
+	import photo2 from '$lib/assets/gallery/2.jpg';
+	import photo3 from '$lib/assets/gallery/3.jpg';
+	import photo4 from '$lib/assets/gallery/4.jpg';
+	import photo5 from '$lib/assets/gallery/5.jpg';
+	import photo6 from '$lib/assets/gallery/6.jpg';
+	import photo7 from '$lib/assets/gallery/7.jpg';
+	import photo8 from '$lib/assets/gallery/8.jpg';
+	import photo9 from '$lib/assets/gallery/9.jpg';
+	import photo10 from '$lib/assets/gallery/10.jpg';
+	import photo11 from '$lib/assets/gallery/11.jpg';
 
 	import PhotoSwipeLightBox from 'photoswipe/lightbox';
 	import PhotoSwipe from 'photoswipe';
@@ -18,67 +18,50 @@
 	import { _ } from 'svelte-i18n';
 
 	onMount(() => {
-		const lightbox = new PhotoSwipeLightBox({
-			gallery: '#gallery',
-			children: 'a',
-			showHideAnimationType: 'fade',
-			pswpModule: PhotoSwipe
+		// 이미지 크기를 미리 로드하고 data 속성 설정
+		const galleryLinks = document.querySelectorAll('#gallery a');
+		const loadPromises = Array.from(galleryLinks).map((link, index) => {
+			return new Promise((resolve) => {
+				const img = new Image();
+				img.onload = () => {
+					link.setAttribute('data-pswp-width', img.naturalWidth.toString());
+					link.setAttribute('data-pswp-height', img.naturalHeight.toString());
+					resolve();
+				};
+				img.onerror = () => {
+					// 에러 시 기본값 설정
+					link.setAttribute('data-pswp-width', '1200');
+					link.setAttribute('data-pswp-height', '800');
+					resolve();
+				};
+				img.src = link.href;
+			});
 		});
 
-		lightbox.init();
+		// 모든 이미지 크기가 로드된 후 PhotoSwipe 초기화
+		Promise.all(loadPromises).then(() => {
+			const lightbox = new PhotoSwipeLightBox({
+				gallery: '#gallery',
+				children: 'a',
+				showHideAnimationType: 'fade',
+				pswpModule: PhotoSwipe
+			});
+
+			lightbox.init();
+		});
 	});
 
 	const photos = [
-		{
-			src: photo10,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo2,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo3,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo4,
-			width: 2000,
-			height: 1333
-		},
-		{
-			src: photo5,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo6,
-			width: 2000,
-			height: 1333
-		},
-		{
-			src: photo7,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo8,
-			width: 1200,
-			height: 1800
-		},
-		{
-			src: photo9,
-			width: 1200,
-			height: 1790
-		},
-		{
-			src: photo11,
-			width: 1200,
-			height: 1790
-		}
+		{ src: photo10 },
+		{ src: photo2 },
+		{ src: photo3 },
+		{ src: photo4 },
+		{ src: photo5 },
+		{ src: photo6 },
+		{ src: photo7 },
+		{ src: photo8 },
+		{ src: photo9 },
+		{ src: photo11 }
 	];
 </script>
 
@@ -92,8 +75,6 @@
 			<a
 				href={photo.src}
 				class="slide"
-				data-pswp-width={photo.width}
-				data-pswp-height={photo.height}
 				target="_blank"
 			>
 				<img class="thumbnail" src={photo.src} alt="" />
@@ -142,24 +123,26 @@
 		display: grid;
 		gap: 1em;
 		grid-template-columns: repeat(2, 1fr);
-		grid-auto-rows: 6.5em;
+		grid-auto-rows: auto;
+	}
+
+	.slide {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	img.thumbnail {
 		border-radius: 4px;
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		height: auto;
+		object-fit: contain;
+		max-height: none;
+		opacity: 0.75;
+		transition: opacity 0.3s ease;
 	}
 
-	.slide:nth-child(1),
-	.slide:nth-child(2),
-	.slide:nth-child(3),
-	.slide:nth-child(5),
-	.slide:nth-child(7),
-	.slide:nth-child(8),
-	.slide:nth-child(9),
-	.slide:nth-child(10) {
-		grid-row: span 2;
+	.slide:hover img.thumbnail {
+		opacity: 1;
 	}
 </style>
